@@ -1,3 +1,4 @@
+const jwt=require('jsonwebtoken');
 const express = require("express");
 const router = express.Router();
 const bcyrpt=require('bcryptjs');
@@ -56,6 +57,13 @@ router.post('/signin',async (req,res)=>{
             
             const isMatch=await bcyrpt.compare(password,Userlogin.password);
             
+            const token =await  Userlogin.generateAuthToken();
+            console.log(token);
+
+            res.cookie("jwtoken",token,{
+              expires:new Date(Date.now+2589200000),
+              httpOnly:true
+            })
             if(!isMatch){
                 res.status(400).json({message:"invalid credentials"})    ;
 
