@@ -3,6 +3,7 @@ import Navbar from './component/Navbar';
 import Home from './component/Home';
 import {Route,Routes} from 'react-router-dom';
 import './App.css';
+import Error from './component/Error';
 
 
 import About from './component/About';
@@ -23,6 +24,8 @@ const App = () => {
           <Route path="/contact" element={<Contact/>} />
           <Route path="/signup" element={<Signup/>} />
           <Route path="/login" element={<Login/>} />
+          <Route  path="*" element={<Error/>}/>
+
         </Routes>
 
     </>
